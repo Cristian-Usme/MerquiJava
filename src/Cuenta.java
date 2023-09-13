@@ -1,13 +1,13 @@
 public class Cuenta {
     public String nroCuenta;
-    private Double saldo;
+    private double saldo;
     private String titular;
     private Movimiento[] Movimientos;
 
-    public Double getSaldo() {
+    public double getSaldo() {
         return saldo;
     }
-    public void setSaldo(Double saldo) {
+    public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
     public String getTitular() {
@@ -22,14 +22,23 @@ public class Cuenta {
     public void setMovimientos(Movimiento[] movimientos) {
         Movimientos = movimientos;
     }
-    public void depositar(){
-
+    public void depositar(double valor){
+        this.saldo += valor;
     }
-    public void retirar(){
-
+    public boolean retirar(double valor){
+        if (this.saldo >= valor){
+            this.saldo -= valor;
+            return true;
+        }
+        return false;
     }
-    public void transferir(){
-
+    public boolean transferir(double valor, Cuenta cuenta){
+        if(this.saldo >= valor){
+            this.saldo -= valor;
+            cuenta.depositar(valor);
+            return true;
+        }
+        return false;
     }
     public void mostrarMovimientos(){
 
