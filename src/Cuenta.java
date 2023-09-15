@@ -4,11 +4,12 @@ public class Cuenta {
     private String titular;
     private Movimiento[] Movimientos;
 
+    public Cuenta(String nroCuenta) {
+        this.nroCuenta = nroCuenta;
+    }
+
     public double getSaldo() {
         return saldo;
-    }
-    public void setSaldo(double saldo) {
-        this.saldo = saldo;
     }
     public String getTitular() {
         return titular;
